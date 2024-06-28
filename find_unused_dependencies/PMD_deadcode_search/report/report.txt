@@ -1,0 +1,69 @@
+/root/packageMapping/hope-boot/hope-admin/src/main/java/com/hope/controller/LoginController.java:7:	UnnecessaryImport:	Unused import 'io.swagger.annotations.*'
+/root/packageMapping/hope-boot/hope-admin/src/main/java/com/hope/controller/ResourceController.java:11:	UnnecessaryImport:	Unused import 'io.swagger.annotations.*'
+/root/packageMapping/hope-boot/hope-admin/src/main/java/com/hope/controller/ResourceController.java:13:	UnnecessaryImport:	Unused import 'org.springframework.beans.factory.annotation.Autowired'
+/root/packageMapping/hope-boot/hope-admin/src/main/java/com/hope/controller/ResourceController.java:15:	UnnecessaryImport:	Unused import 'org.springframework.web.bind.annotation.*'
+/root/packageMapping/hope-boot/hope-admin/src/main/java/com/hope/controller/ResourceController.java:83:	UnusedAssignment:	The initializer for variable 'resource' is never used (overwritten on lines 85 and 87)
+/root/packageMapping/hope-boot/hope-admin/src/main/java/com/hope/controller/RoleController.java:15:	UnnecessaryImport:	Unused import 'io.swagger.annotations.*'
+/root/packageMapping/hope-boot/hope-admin/src/main/java/com/hope/controller/RoleController.java:18:	UnnecessaryImport:	Unused import 'org.springframework.beans.factory.annotation.Autowired'
+/root/packageMapping/hope-boot/hope-admin/src/main/java/com/hope/controller/RoleController.java:21:	UnnecessaryImport:	Unused import 'org.springframework.web.bind.annotation.*'
+/root/packageMapping/hope-boot/hope-admin/src/main/java/com/hope/controller/UserController.java:20:	UnnecessaryImport:	Unused import 'io.swagger.annotations.*'
+/root/packageMapping/hope-boot/hope-admin/src/main/java/com/hope/controller/UserController.java:23:	UnnecessaryImport:	Unused import 'org.slf4j.Logger'
+/root/packageMapping/hope-boot/hope-admin/src/main/java/com/hope/controller/UserController.java:24:	UnnecessaryImport:	Unused import 'org.slf4j.LoggerFactory'
+/root/packageMapping/hope-boot/hope-admin/src/main/java/com/hope/controller/UserController.java:25:	UnnecessaryImport:	Unused import 'org.springframework.beans.factory.annotation.Autowired'
+/root/packageMapping/hope-boot/hope-admin/src/main/java/com/hope/controller/UserController.java:27:	UnnecessaryImport:	Unused import 'org.springframework.web.bind.annotation.*'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/model/beans/SysResource.java:6:	UnnecessaryImport:	Unused import 'lombok.*'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/model/beans/SysRole.java:6:	UnnecessaryImport:	Unused import 'lombok.*'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/model/beans/SysRoleResource.java:3:	UnnecessaryImport:	Unused import 'com.hope.mybatis.pojo.CommonEntity'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/model/beans/SysRoleResource.java:4:	UnnecessaryImport:	Unused import 'io.swagger.annotations.ApiModel'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/model/beans/SysRoleResource.java:5:	UnnecessaryImport:	Unused import 'lombok.*'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/model/beans/SysUserRole.java:3:	UnnecessaryImport:	Unused import 'com.hope.mybatis.pojo.CommonEntity'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/model/beans/SysUserRole.java:4:	UnnecessaryImport:	Unused import 'lombok.*'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/model/dto/RoleResource.java:6:	UnnecessaryImport:	Unused import 'java.util.Date'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/model/dto/UserRole.java:6:	UnnecessaryImport:	Unused import 'java.util.Date'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/service/impl/SysResourceServiceImpl.java:9:	UnnecessaryImport:	Unused import 'org.springframework.beans.factory.annotation.Autowired'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/service/impl/SysResourceServiceImpl.java:36:	UnusedPrivateMethod:	Avoid unused private methods such as 'getResources(List<SysResource>)'.
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/service/impl/SysResourceServiceImpl.java:70:	UnusedAssignment:	The initializer for variable 'trees' is never used (overwritten on lines 75 and 77)
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/service/impl/SysResourceServiceImpl.java:136:	UnusedAssignment:	The initializer for variable 'trees' is never used (overwritten on line 138)
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/service/impl/SysRoleResourceServiceImpl.java:4:	UnnecessaryImport:	Unused import 'com.hope.model.dto.RoleResource'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/service/impl/SysRoleResourceServiceImpl.java:8:	UnnecessaryImport:	Unused import 'org.springframework.util.CollectionUtils'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/service/impl/SysRoleResourceServiceImpl.java:10:	UnnecessaryImport:	Unused import 'java.util.ArrayList'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/service/impl/SysRoleResourceServiceImpl.java:11:	UnnecessaryImport:	Unused import 'java.util.List'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/service/impl/SysRoleServiceImpl.java:6:	UnnecessaryImport:	Unused import 'com.hope.model.beans.SysResource'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/service/impl/SysRoleServiceImpl.java:16:	UnnecessaryImport:	Unused import 'org.springframework.beans.factory.annotation.Autowired'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/service/impl/SysRoleServiceImpl.java:45:	UnusedPrivateMethod:	Avoid unused private methods such as 'getRoles(List<SysRole>)'.
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/service/impl/SysRoleServiceImpl.java:101:	UnusedAssignment:	The initializer for variable 'map' is never used (overwritten on line 103)
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/service/impl/SysUserRoleServiceImpl.java:3:	UnnecessaryImport:	Unused import 'cn.hutool.core.collection.CollectionUtil'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/service/impl/SysUserRoleServiceImpl.java:5:	UnnecessaryImport:	Unused import 'cn.hutool.core.util.StrUtil'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/service/impl/SysUserRoleServiceImpl.java:11:	UnnecessaryImport:	Unused import 'org.springframework.beans.factory.annotation.Autowired'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/service/impl/SysUserRoleServiceImpl.java:42:	UnusedPrivateMethod:	Avoid unused private methods such as 'getUserRoles(List<SysUserRole>)'.
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/service/impl/SysUserServiceImpl.java:10:	UnnecessaryImport:	Unused import 'org.springframework.beans.factory.annotation.Autowired'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/shiro/filter/KickoutSessionControlFilter.java:91:	UnusedAssignment:	The initializer for variable 'kickoutSessionId' is never used (overwritten on lines 95 and 99)
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/shiro/filter/KickoutSessionControlFilter.java:139:	UnusedFormalParameter:	Avoid unused method parameters such as 'map'.
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/shiro/filter/LoginFormAuthenticationFilter.java:3:	UnnecessaryImport:	Unused import 'org.apache.shiro.web.filter.authc.FormAuthenticationFilter'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/shiro/filter/LoginFormAuthenticationFilter.java:4:	UnnecessaryImport:	Unused import 'org.apache.shiro.web.util.WebUtils'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/shiro/filter/LoginFormAuthenticationFilter.java:6:	UnnecessaryImport:	Unused import 'javax.servlet.ServletRequest'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/shiro/filter/LoginFormAuthenticationFilter.java:7:	UnnecessaryImport:	Unused import 'javax.servlet.ServletResponse'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/shiro/realm/HopeShiroRealm.java:11:	UnnecessaryImport:	Unused import 'org.apache.shiro.authc.*'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/shiro/realm/HopeShiroRealm.java:23:	UnnecessaryImport:	Unused import 'org.slf4j.Logger'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/shiro/realm/HopeShiroRealm.java:24:	UnnecessaryImport:	Unused import 'org.slf4j.LoggerFactory'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/shiro/service/impl/ShiroServiceImpl.java:20:	UnnecessaryImport:	Unused import 'org.slf4j.Logger'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/shiro/service/impl/ShiroServiceImpl.java:21:	UnnecessaryImport:	Unused import 'org.slf4j.LoggerFactory'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/shiro/service/impl/ShiroServiceImpl.java:22:	UnnecessaryImport:	Unused import 'org.springframework.beans.factory.annotation.Autowired'
+/root/packageMapping/hope-boot/hope-core/src/main/java/com/hope/shiro/service/impl/ShiroServiceImpl.java:115:	UnusedAssignment:	The initializer for variable 'abstractShiroFilter' is never used (overwritten on line 117)
+/root/packageMapping/hope-boot/hope-framework/src/main/java/com/hope/config/MvcConfig.java:5:	UnnecessaryImport:	Unused import 'org.springframework.web.servlet.HandlerInterceptor'
+/root/packageMapping/hope-boot/hope-framework/src/main/java/com/hope/config/MvcConfig.java:6:	UnnecessaryImport:	Unused import 'org.springframework.web.servlet.ModelAndView'
+/root/packageMapping/hope-boot/hope-framework/src/main/java/com/hope/config/MvcConfig.java:9:	UnnecessaryImport:	Unused import 'org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter'
+/root/packageMapping/hope-boot/hope-framework/src/main/java/com/hope/config/MvcConfig.java:11:	UnnecessaryImport:	Unused import 'javax.servlet.http.HttpServletRequest'
+/root/packageMapping/hope-boot/hope-framework/src/main/java/com/hope/config/MvcConfig.java:12:	UnnecessaryImport:	Unused import 'javax.servlet.http.HttpServletResponse'
+/root/packageMapping/hope-boot/hope-framework/src/main/java/com/hope/config/MvcConfig.java:13:	UnnecessaryImport:	Unused import 'java.util.ArrayList'
+/root/packageMapping/hope-boot/hope-framework/src/main/java/com/hope/config/MvcConfig.java:14:	UnnecessaryImport:	Unused import 'java.util.List'
+/root/packageMapping/hope-boot/hope-framework/src/main/java/com/hope/interceptor/TTOInterceptor.java:3:	UnnecessaryImport:	Unused import 'cn.hutool.core.date.DateUtil'
+/root/packageMapping/hope-boot/hope-framework/src/main/java/com/hope/interceptor/TTOInterceptor.java:83:	UnusedFormalParameter:	Avoid unused method parameters such as 'response'.
+/root/packageMapping/hope-boot/hope-framework/src/main/java/com/hope/jpa/repository/impl/BaseRepositoryImpl.java:14:	UnnecessaryImport:	Unused import 'javax.persistence.criteria.*'
+/root/packageMapping/hope-boot/hope-framework/src/main/java/com/hope/mybatis/service/impl/BaseServiceImpl.java:9:	UnnecessaryImport:	Unused import 'org.springframework.util.CollectionUtils'
+/root/packageMapping/hope-boot/hope-framework/src/main/java/com/hope/mybatis/service/impl/BaseServiceImpl.java:12:	UnnecessaryImport:	Unused import 'java.util.ArrayList'
+/root/packageMapping/hope-boot/hope-generator/src/main/java/com/hope/core/util/TableParseUtil.java:41:	UnusedAssignment:	The initializer for variable 'tableName' is never used (overwritten on lines 43 and 45)
+/root/packageMapping/hope-boot/hope-generator/src/main/java/com/hope/core/util/TableParseUtil.java:140:	UnusedAssignment:	The value assigned to variable 'fieldComment' is never used (overwritten on line 144)
+/root/packageMapping/hope-boot/hope-quartz/src/main/java/com/hope/quartz/controller/ManageQuartzJobs.java:4:	UnnecessaryImport:	Unused import 'org.quartz.*'
+/root/packageMapping/hope-boot/hope-quartz/src/main/java/com/hope/quartz/schedule/CronScheduleJob.java:4:	UnnecessaryImport:	Unused import 'org.quartz.*'
+/root/packageMapping/hope-boot/hope-sso-server/src/main/java/com/hope/controller/resolver/WebExceptionResolver.java:51:	UnusedAssignment:	The initializer for variable 'errorResult' is never used (overwritten on lines 53 and 55)
