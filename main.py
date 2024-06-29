@@ -13,10 +13,11 @@ if __name__ == "__main__":
     parser.add_argument('-p', '--project', dest="project" , action="store", type=str, default=None, help="프로젝트 경로")
     args = parser.parse_args()
     project_dir = args.project
+    formatter_dir = './find_unused_dependencies/google-java-format-1.22.0-all-deps.jar'
     jar_dir = './jar'
 
     ## Unused Imports 추출
-    unused_imports = pom_project_process(project_dir, './find_unused_dependencies/google-java-format-1.22.0-all-deps.jar')
+    unused_imports = pom_project_process(project_dir, formatter_dir)
     with open('unused_imports.txt', 'w') as import_file:
         for imp in unused_imports:
             import_file.write(f"{imp}\n")
