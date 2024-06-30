@@ -1,4 +1,3 @@
-from typing import Counter
 import os
 import re
 
@@ -29,18 +28,3 @@ def extract_imports_from_java_files(directory):
 
 
     return sorted(imports)
-
-def find_root_package(imports):
-    # com으로 시작하는 패키지들만 필터링
-    com_imports = [imp for imp in imports if imp.startswith('com.')]
-
-    # 최상위 패키지 부분만 추출하여 빈도 계산
-    com_top_level_packages = [imp.split('.')[0:2] for imp in com_imports]
-    com_top_level_packages = ['.'.join(pkg) for pkg in com_top_level_packages]
-    package_counter = Counter(com_top_level_packages)
-
-    # 가장 많이 사용된 패키지 찾기
-    if package_counter:
-        root_package, _ = package_counter.most_common(1)[0]
-        return root_package
-    return None

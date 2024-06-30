@@ -1,4 +1,3 @@
-import json
 from xml.etree import ElementTree as ET
 import requests
 import os
@@ -163,7 +162,7 @@ def extract_dependencies(pom_file):
     return combined
 
 # 모든 pom.xml 추출
-def extract_from_all_poms(directory, root_package):
+def extract_from_all_poms(directory):
     all_dependencies = []
 
     for root, _, files in os.walk(directory):
@@ -189,11 +188,5 @@ def extract_from_all_poms(directory, root_package):
         x['artifactId'] if x['artifactId'] else '',
         x['version'] if x['version'] else ''
     ))
-    
-    # root_package로 시작하는 것은 필터링
-    filtered_dependencies = [
-        dep for dep in sorted_dependencies
-        if not (root_package and dep['groupId'].startswith(root_package))
-    ]
 
-    return filtered_dependencies
+    return sorted_dependencies

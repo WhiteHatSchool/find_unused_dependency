@@ -1,5 +1,5 @@
 from find_unused_dependencies.dependency_analyzer import pom_project_process
-from extract.javaFile import extract_imports_from_java_files, find_root_package
+from extract.javaFile import extract_imports_from_java_files
 from extract.jar import mapping_dependencies
 from extract.pom import extract_from_all_poms
 import subprocess
@@ -24,17 +24,13 @@ if __name__ == "__main__":
 
     # Imports 추출
     unsorted_imports = extract_imports_from_java_files(project_dir)
-    root_package = find_root_package(unsorted_imports)
-    root_package_lower = root_package.lower()
-    imports = [imp for imp in unsorted_imports if not imp.startswith(root_package_lower)]
-    imports = [imp for imp in imports if not (root_package and imp.startswith(root_package)) and not imp.startswith('java.')]
-    imports = [imp for imp in imports if not imp.startswith('net.sf.json.') and not imp.startswith('javax.')]
+    imports = [imp for imp in unsorted_imports if not imp.startswith('java.') and not imp.startswith('net.sf.json.') and not imp.startswith('javax.')]
     with open('imports.txt', 'w') as import_file:
         for imp in imports:
             import_file.write(f"{imp}\n")
 
     ## Dependencies 추출
-    dependencies = extract_from_all_poms(project_dir, root_package)
+    dependencies = extract_from_all_poms(project_dir)
     with open('dependecies.txt', 'w') as import_file:
         for dependency in dependencies:
             import_file.write(f"{dependency}\n")
