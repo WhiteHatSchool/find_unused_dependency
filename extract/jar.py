@@ -1,3 +1,4 @@
+import shutil
 from extract.pom import get_latest_version
 import zipfile
 import requests
@@ -74,7 +75,7 @@ def download_jar(groupId, artifactId, version, download_dir):
             return
 
         # Download the file from URL
-        print(f"Downloading {artifactId}-{version}.jar...")
+        print(f"\nDownloading {artifactId}-{version}.jar...")
         with requests.get(download_url, stream=True) as r:
             r.raise_for_status()
             with open(file_path, 'wb') as f:
@@ -128,6 +129,19 @@ def extract_classes_from_directory(groupId, artifactId, version, directory):
     
     return all_class_names
 
+def delete_jar(jar_dir):
+    # Jar 삭제
+    if os.path.exists(jar_dir) and os.path.isdir(jar_dir):
+        for filename in os.listdir(jar_dir):
+            file_path = os.path.join(jar_dir, filename)
+            try:
+                if os.path.isfile(file_path) or os.path.islink(file_path):
+                    os.remove(file_path)
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)
+            except Exception as e:
+                print(f'Failed to delete {file_path}. Reason: {e}')
+
 def mapping_dependencies(dependency, imports, uimports, directory):
     groupId = dependency['groupId']
     artifactId = dependency['artifactId']
@@ -139,11 +153,11 @@ def mapping_dependencies(dependency, imports, uimports, directory):
 
     for imp in imports:
         if imp in classes_set:
-            return True
+            print("[used dependency]  " + imp)
+            return 1
     for imp in uimports:
         if imp in classes_set:
-            with open('unused_dependency.txt', 'w') as import_file:
-                import_file.write(f"unused import: {imp} -> {groupId}:{artifactId}:{version}")
-            return False
-    return False
+            print("[unused dependency]  " + imp)
+            return -1
+    return 0
     

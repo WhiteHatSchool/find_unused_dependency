@@ -169,7 +169,7 @@ def extract_from_all_poms(directory):
         for file in files:
             if file == "pom.xml":
                 pom_file_path = os.path.join(root, file)
-                print(f"Processing {pom_file_path}...")
+                print(f"\nProcessing {pom_file_path}...")
                 dependencies = extract_dependencies(pom_file_path)
                 all_dependencies.extend(dependencies)
     

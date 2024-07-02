@@ -1,11 +1,8 @@
 from find_unused_dependencies.dependency_analyzer import pom_project_process
 from extract.javaFile import extract_imports_from_java_files
-from extract.jar import mapping_dependencies
+from extract.jar import mapping_dependencies, delete_jar
 from extract.pom import extract_from_all_poms
-import subprocess
 import argparse
-import shutil
-import os
 
 if __name__ == "__main__":
     # Argument 추가
@@ -17,14 +14,14 @@ if __name__ == "__main__":
     jar_dir = './jar'
 
     ## Unused Imports 추출
-    unused_imports = pom_project_process(project_dir, formatter_dir)
+    unused_imports = set(pom_project_process(project_dir, formatter_dir))
     with open('unused_imports.txt', 'w') as import_file:
         for imp in unused_imports:
             import_file.write(f"{imp}\n")
 
     # Imports 추출
-    unsorted_imports = extract_imports_from_java_files(project_dir)
-    imports = [imp for imp in unsorted_imports if not imp.startswith('java.') and not imp.startswith('net.sf.json.') and not imp.startswith('javax.')]
+    unsorted_imports = set(extract_imports_from_java_files(project_dir))
+    imports = unsorted_imports - unused_imports
     with open('imports.txt', 'w') as import_file:
         for imp in imports:
             import_file.write(f"{imp}\n")
@@ -39,9 +36,10 @@ if __name__ == "__main__":
     used_dependencies = []
     unused_dependencies = []
     for dependency in dependencies:
-        if mapping_dependencies(dependency, imports, unused_imports, jar_dir) == True:
+        val = mapping_dependencies(dependency, imports, unused_imports, jar_dir)
+        if val == 1:
             used_dependencies.append(dependency)
-        else:
+        elif val == -1:
             unused_dependencies.append(dependency)
     
     # 의존성 사용 여부 결과 출력
@@ -52,24 +50,10 @@ if __name__ == "__main__":
     with open('unused_dependency.txt', 'w') as import_file:
         for dependency in unused_dependencies:
             import_file.write(f"{dependency['groupId']}:{dependency['artifactId']}:{dependency['version']}\n")
-
-
-
-    # Jar 삭제
-    if os.path.exists(jar_dir) and os.path.isdir(jar_dir):
-        for filename in os.listdir(jar_dir):
-            file_path = os.path.join(jar_dir, filename)
-            try:
-                if os.path.isfile(file_path) or os.path.islink(file_path):
-                    os.remove(file_path)
-                elif os.path.isdir(file_path):
-                    shutil.rmtree(file_path)
-            except Exception as e:
-                print(f'Failed to delete {file_path}. Reason: {e}')
     
-    # Repository 변경사항 삭제
-    command = 'cd ' + project_dir + '&& git reset --hard HEAD && git clean -fd'
-    result = subprocess.run(command, capture_output=True, text=True, shell=True)
-    print("STDOUT:", result.stdout)
-    print("STDERR:", result.stderr)
-    print("Return Code:", result.returncode)
+    # Git Repository 변경사항 삭제
+    # command = 'cd ' + project_dir + '&& git reset --hard HEAD && git clean -fd'
+    # result = subprocess.run(command, capture_output=True, text=True, shell=True)
+    # print("STDOUT:", result.stdout)
+    # print("STDERR:", result.stderr)
+    # print("Return Code:", result.returncode)

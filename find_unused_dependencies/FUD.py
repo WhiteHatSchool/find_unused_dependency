@@ -26,7 +26,11 @@ def get_import_list(file):
 
 
 def del_unused_import(formatter_jar, file):
-    return subprocess.run(["java", "-jar", formatter_jar, "--replace", file])
+    formatted_imports = []
+    result = subprocess.run(["java", "-jar", formatter_jar, "--fix-imports-only", file], stdout=subprocess.PIPE, text=True, encoding="utf-8")
+    formatted_imports += [line.strip() for line in result.stdout.splitlines() if line.strip().startswith("import")]
+
+    return list(map(lambda x: x.replace("import ", "").replace("static ", "").replace(";", ""), formatted_imports))
 
 
 def get_wildcard_import(import_statement):
@@ -46,10 +50,6 @@ def list_of_unused_import(all_import, used_import):
     for import_line in all_import:
         if get_wildcard_import(import_line) not in used_import and import_line not in used_import:
             unused_imports.add(import_line)
-
-    for import_line in unused_imports:
-        if get_wildcard_import(import_line) in used_import:
-            unused_imports.remove(import_line)
 
     return list(unused_imports)
 
@@ -73,9 +73,7 @@ def find_unused_dependencies(project_dir, formatter_jar, callback=None):
     current_file_index = 0
     # 각 Java 파일에 Google Java Formatter를 적용하여 포맷팅 및 사용되지 않는 import문 제거
     for file in java_files:
-        del_unused_import(formatter_jar, file)
-
-        used_import.update(get_import_list(file))
+        used_import.update(del_unused_import(formatter_jar, file))
         current_file_index = current_file_index + 1
         callback(current_file_index, total_files, file, "Removing")
 
