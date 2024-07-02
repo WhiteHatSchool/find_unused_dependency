@@ -1,0 +1,329 @@
+{
+    "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+    "bomFormat": "CycloneDX",
+    "specVersion": "1.6",
+    "serialNumber": "urn:uuid:b5db28f9-b7e1-4c20-bf8e-ed4f01437512",
+    "version": 1,
+    "metadata": {
+        "timestamp": "2024-07-02T22:00:17+09:00",
+        "tools": {
+            "components": [
+                {
+                    "type": "application",
+                    "author": "anchore",
+                    "name": "syft",
+                    "version": "1.8.0"
+                }
+            ]
+        },
+        "component": {
+            "bom-ref": "29179ace324e312f",
+            "type": "file",
+            "name": ".\\sample_code\\simplebackend\\"
+        }
+    },
+    "components": [
+        {
+            "bom-ref": "pkg:maven/org.apache.commons/commons-lang3@3.12.0?package-id=a3fd864a31aceb02",
+            "type": "library",
+            "group": "org.apache.commons",
+            "name": "commons-lang3",
+            "version": "3.12.0",
+            "cpe": "cpe:2.3:a:apache:commons-lang3:3.12.0:*:*:*:*:*:*:*",
+            "purl": "pkg:maven/org.apache.commons/commons-lang3@3.12.0",
+            "properties": [
+                {
+                    "name": "syft:package:foundBy",
+                    "value": "java-pom-cataloger"
+                },
+                {
+                    "name": "syft:package:language",
+                    "value": "java"
+                },
+                {
+                    "name": "syft:package:type",
+                    "value": "java-archive"
+                },
+                {
+                    "name": "syft:package:metadataType",
+                    "value": "java-archive"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:apache:commons_lang3:3.12.0:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:apache:commons:3.12.0:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:location:0:path",
+                    "value": "\\pom.xml"
+                },
+                {
+                    "name": "syft:metadata:-:artifactID",
+                    "value": "commons-lang3"
+                },
+                {
+                    "name": "syft:metadata:-:groupID",
+                    "value": "org.apache.commons"
+                }
+            ]
+        },
+        {
+            "bom-ref": "pkg:maven/com.google.guava/guava@30.1.1-jre?package-id=dae9069b8f102a0a",
+            "type": "library",
+            "group": "com.google.guava",
+            "name": "guava",
+            "version": "30.1.1-jre",
+            "cpe": "cpe:2.3:a:google:guava:30.1.1-jre:*:*:*:*:*:*:*",
+            "purl": "pkg:maven/com.google.guava/guava@30.1.1-jre",
+            "properties": [
+                {
+                    "name": "syft:package:foundBy",
+                    "value": "java-pom-cataloger"
+                },
+                {
+                    "name": "syft:package:language",
+                    "value": "java"
+                },
+                {
+                    "name": "syft:package:type",
+                    "value": "java-archive"
+                },
+                {
+                    "name": "syft:package:metadataType",
+                    "value": "java-archive"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:guava:guava:30.1.1-jre:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:location:0:path",
+                    "value": "\\pom.xml"
+                },
+                {
+                    "name": "syft:metadata:-:artifactID",
+                    "value": "guava"
+                },
+                {
+                    "name": "syft:metadata:-:groupID",
+                    "value": "com.google.guava"
+                }
+            ]
+        },
+        {
+            "bom-ref": "pkg:maven/org.springframework.boot/spring-boot-starter-test?package-id=4857002f3da759bc",
+            "type": "library",
+            "group": "org.springframework.boot",
+            "name": "spring-boot-starter-test",
+            "cpe": "cpe:2.3:a:spring-boot-starter-test:spring-boot-starter-test:*:*:*:*:*:*:*:*",
+            "purl": "pkg:maven/org.springframework.boot/spring-boot-starter-test",
+            "properties": [
+                {
+                    "name": "syft:package:foundBy",
+                    "value": "java-pom-cataloger"
+                },
+                {
+                    "name": "syft:package:language",
+                    "value": "java"
+                },
+                {
+                    "name": "syft:package:type",
+                    "value": "java-archive"
+                },
+                {
+                    "name": "syft:package:metadataType",
+                    "value": "java-archive"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring-boot-starter-test:spring_boot_starter_test:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring_boot_starter_test:spring-boot-starter-test:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring_boot_starter_test:spring_boot_starter_test:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring-boot-starter:spring-boot-starter-test:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring-boot-starter:spring_boot_starter_test:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring_boot_starter:spring-boot-starter-test:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring_boot_starter:spring_boot_starter_test:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:springframework:spring-boot-starter-test:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:springframework:spring_boot_starter_test:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring-boot:spring-boot-starter-test:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring-boot:spring_boot_starter_test:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring_boot:spring-boot-starter-test:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring_boot:spring_boot_starter_test:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring:spring-boot-starter-test:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring:spring_boot_starter_test:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:boot:spring-boot-starter-test:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:boot:spring_boot_starter_test:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:location:0:path",
+                    "value": "\\pom.xml"
+                },
+                {
+                    "name": "syft:metadata:-:artifactID",
+                    "value": "spring-boot-starter-test"
+                },
+                {
+                    "name": "syft:metadata:-:groupID",
+                    "value": "org.springframework.boot"
+                }
+            ]
+        },
+        {
+            "bom-ref": "pkg:maven/org.springframework.boot/spring-boot-starter-web?package-id=1fea070e3cb77d99",
+            "type": "library",
+            "group": "org.springframework.boot",
+            "name": "spring-boot-starter-web",
+            "cpe": "cpe:2.3:a:spring-boot-starter-web:spring-boot-starter-web:*:*:*:*:*:*:*:*",
+            "purl": "pkg:maven/org.springframework.boot/spring-boot-starter-web",
+            "properties": [
+                {
+                    "name": "syft:package:foundBy",
+                    "value": "java-pom-cataloger"
+                },
+                {
+                    "name": "syft:package:language",
+                    "value": "java"
+                },
+                {
+                    "name": "syft:package:type",
+                    "value": "java-archive"
+                },
+                {
+                    "name": "syft:package:metadataType",
+                    "value": "java-archive"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring-boot-starter-web:spring_boot_starter_web:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring_boot_starter_web:spring-boot-starter-web:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring_boot_starter_web:spring_boot_starter_web:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring-boot-starter:spring-boot-starter-web:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring-boot-starter:spring_boot_starter_web:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring_boot_starter:spring-boot-starter-web:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring_boot_starter:spring_boot_starter_web:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:springframework:spring-boot-starter-web:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:springframework:spring_boot_starter_web:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring-boot:spring-boot-starter-web:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring-boot:spring_boot_starter_web:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring_boot:spring-boot-starter-web:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring_boot:spring_boot_starter_web:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring:spring-boot-starter-web:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:spring:spring_boot_starter_web:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:boot:spring-boot-starter-web:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:cpe23",
+                    "value": "cpe:2.3:a:boot:spring_boot_starter_web:*:*:*:*:*:*:*:*"
+                },
+                {
+                    "name": "syft:location:0:path",
+                    "value": "\\pom.xml"
+                },
+                {
+                    "name": "syft:metadata:-:artifactID",
+                    "value": "spring-boot-starter-web"
+                },
+                {
+                    "name": "syft:metadata:-:groupID",
+                    "value": "org.springframework.boot"
+                }
+            ]
+        }
+    ]
+}

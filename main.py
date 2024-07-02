@@ -2,6 +2,7 @@ from find_unused_dependencies.dependency_analyzer import pom_project_process
 from extract.javaFile import extract_imports_from_java_files
 from extract.jar import mapping_dependencies, delete_jar
 from extract.pom import extract_from_all_poms
+from sbom.create import create_sbom
 import argparse
 
 if __name__ == "__main__":
@@ -12,6 +13,9 @@ if __name__ == "__main__":
     project_dir = args.project
     formatter_dir = './find_unused_dependencies/google-java-format-1.22.0-all-deps.jar'
     jar_dir = './jar'
+
+    # SBOM 생성
+    create_sbom(project_dir)
 
     ## Unused Imports 추출
     unused_imports = set(pom_project_process(project_dir, formatter_dir))
@@ -41,6 +45,7 @@ if __name__ == "__main__":
             used_dependencies.append(dependency)
         elif val == -1:
             unused_dependencies.append(dependency)
+        delete_jar(jar_dir)
     
     # 의존성 사용 여부 결과 출력
     with open('used_dependency.txt', 'w') as import_file:
@@ -51,7 +56,7 @@ if __name__ == "__main__":
         for dependency in unused_dependencies:
             import_file.write(f"{dependency['groupId']}:{dependency['artifactId']}:{dependency['version']}\n")
     
-    # Git Repository 변경사항 삭제
+    # Git Repository 변경사항 삭제 (필요한 경우에 주석 해제)
     # command = 'cd ' + project_dir + '&& git reset --hard HEAD && git clean -fd'
     # result = subprocess.run(command, capture_output=True, text=True, shell=True)
     # print("STDOUT:", result.stdout)

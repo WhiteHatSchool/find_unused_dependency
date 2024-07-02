@@ -153,11 +153,11 @@ def mapping_dependencies(dependency, imports, uimports, directory):
 
     for imp in imports:
         if imp in classes_set:
-            print("[used dependency]  " + imp)
+            print("[used import]: " + imp)
             return 1
     for imp in uimports:
         if imp in classes_set:
-            print("[unused dependency]  " + imp)
+            print("[unused import]: " + imp)
             return -1
     return 0
     
