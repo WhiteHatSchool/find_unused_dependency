@@ -70,11 +70,11 @@ def download_jar(groupId, artifactId, version, download_dir):
             if version:
                 retry(groupId, artifactId, version, download_dir)
             else:
-                print("Latest version is not available.\n")
+                print("Latest version is not available.")
             return
 
         # Download the file from URL
-        print(f"\nDownloading {artifactId}-{version}.jar...")
+        print(f"Downloading {artifactId}-{version}.jar...")
         with requests.get(download_url, stream=True) as r:
             r.raise_for_status()
             with open(file_path, 'wb') as f:

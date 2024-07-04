@@ -66,19 +66,19 @@ def find_unused_dependencies(project_dir, formatter_jar, callback=None):
 
     ##########  find all imports  ##########
     all_imports = []
-    current_file_index = 0
     # 포맷팅된 파일에서 사용된 import 문과 원본 파일의 import 문 비교
     for file in java_files:
         all_imports += get_import_list(file)
 
-        current_file_index += 1
-        callback(current_file_index, total_files, file, "Finding")
-
     ##########  delete import and find used import  ##########
     used_import = set()
+    current_file_index = 0
     # 각 Java 파일에 Google Java Formatter를 적용하여 포맷팅 및 사용되지 않는 import문 제거
     for file in java_files:
         used_import.update(del_unused_import(formatter_jar, file))
+
+        current_file_index += 1
+        callback(current_file_index, total_files, file, "Finding")
 
     ##########  find unused import  ##########
     unused_imports = list_of_unused_import(all_imports, used_import)

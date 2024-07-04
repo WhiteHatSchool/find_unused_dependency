@@ -6,6 +6,7 @@ from sbom.create import create_sbom
 import subprocess
 import argparse
 import shutil
+import json
 import os
 
 def delete(dir):
@@ -35,20 +36,20 @@ if __name__ == "__main__":
 
     ## Unused Imports 추출
     unused_imports = set(pom_project_process(project_dir, formatter_dir))
-    with open('unused_imports.txt', 'w') as import_file:
+    with open('./debug/unused_imports.txt', 'w') as import_file:
         for imp in unused_imports:
             import_file.write(f"{imp}\n")
 
     # Imports 추출
     unsorted_imports = set(extract_imports_from_java_files(project_dir))
     imports = unsorted_imports - unused_imports
-    with open('imports.txt', 'w') as import_file:
+    with open('./debug/imports.txt', 'w') as import_file:
         for imp in imports:
             import_file.write(f"{imp}\n")
 
     ## Dependencies 추출
     dependencies = extract_from_all_poms(project_dir)
-    with open('dependecies.txt', 'w') as import_file:
+    with open('./debug/dependecies.txt', 'w') as import_file:
         for dependency in dependencies:
             import_file.write(f"{dependency}\n")
     original_dependencies = []
@@ -67,14 +68,17 @@ if __name__ == "__main__":
     delete(pom_dir)
     
     # 의존성 사용 여부 결과 출력
-    with open('used_dependency.txt', 'w') as import_file:
+    with open('./debug/used_dependency.txt', 'w') as import_file:
         for dependency in used_dependencies:
             import_file.write(f"{dependency['groupId']}:{dependency['artifactId']}:{dependency['version']}\n")
 
-    with open('unused_dependency.txt', 'w') as import_file:
+    with open('./debug/unused_dependency.txt', 'w') as import_file:
         for dependency in unused_dependencies:
             import_file.write(f"{dependency['groupId']}:{dependency['artifactId']}:{dependency['version']}\n")
     
+    with open('./result/unused_dependency.json', 'w') as import_file:
+        json.dump(unused_dependencies, import_file, indent=4)
+
     # Git Repository 변경사항 삭제 (필요한 경우에 주석 해제)
     command = 'cd ' + project_dir + '&& git reset --hard HEAD && git clean -fd'
     result = subprocess.run(command, capture_output=True, text=True, shell=True)

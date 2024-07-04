@@ -27,8 +27,8 @@ def pretty_print_json(input_file_path, output_file_path):
         json.dump(data, outfile, indent=4, ensure_ascii=False)
 
 def create_sbom(project_dir):
-    temp_output_file_path = './sbom/syft_sbom.json'
-    final_output_file_path = './sbom/syft_sbom.json'
+    temp_output_file_path = './result/syft_sbom.json'
+    final_output_file_path = './result/syft_sbom.json'
     
     # Generate the SBOM
     generate_sbom(project_dir, temp_output_file_path)

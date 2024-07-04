@@ -1,8 +1,0 @@
-org.springframework.boot.test.context.SpringBootTest
-org.springframework.boot.SpringApplication
-java.util.List
-org.springframework.boot.autoconfigure.SpringBootApplication
-org.springframework.web.bind.annotation.RestController
-java.util.ArrayList
-org.springframework.web.bind.annotation.GetMapping
-org.junit.jupiter.api.Test

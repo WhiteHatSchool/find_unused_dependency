@@ -1,0 +1,12 @@
+[
+    {
+        "groupId": "com.google.guava",
+        "artifactId": "guava",
+        "version": "30.1.1-jre"
+    },
+    {
+        "groupId": "org.apache.commons",
+        "artifactId": "commons-lang3",
+        "version": "3.12.0"
+    }
+]
