@@ -1,9 +1,24 @@
 from find_unused_dependencies.dependency_analyzer import pom_project_process
 from extract.javaFile import extract_imports_from_java_files
-from extract.jar import mapping_dependencies, delete_jar
 from extract.pom import extract_from_all_poms
+from extract.jar import mapping_dependencies
 from sbom.create import create_sbom
+import subprocess
 import argparse
+import shutil
+import os
+
+def delete(dir):
+    if os.path.exists(dir) and os.path.isdir(dir):
+        for filename in os.listdir(dir):
+            file_path = os.path.join(dir, filename)
+            try:
+                if os.path.isfile(file_path) or os.path.islink(file_path):
+                    os.remove(file_path)
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)
+            except Exception as e:
+                print(f'Failed to delete {file_path}. Reason: {e}')
 
 if __name__ == "__main__":
     # Argument 추가
@@ -13,6 +28,7 @@ if __name__ == "__main__":
     project_dir = args.project
     formatter_dir = './find_unused_dependencies/google-java-format-1.22.0-all-deps.jar'
     jar_dir = './jar'
+    pom_dir = './pom'
 
     # SBOM 생성
     create_sbom(project_dir)
@@ -35,6 +51,8 @@ if __name__ == "__main__":
     with open('dependecies.txt', 'w') as import_file:
         for dependency in dependencies:
             import_file.write(f"{dependency}\n")
+    original_dependencies = []
+    original_dependencies.extend(dependencies)
 
     # Import와 패키지 매핑
     used_dependencies = []
@@ -45,7 +63,8 @@ if __name__ == "__main__":
             used_dependencies.append(dependency)
         elif val == -1:
             unused_dependencies.append(dependency)
-        delete_jar(jar_dir)
+        delete(jar_dir)
+    delete(pom_dir)
     
     # 의존성 사용 여부 결과 출력
     with open('used_dependency.txt', 'w') as import_file:
@@ -57,8 +76,9 @@ if __name__ == "__main__":
             import_file.write(f"{dependency['groupId']}:{dependency['artifactId']}:{dependency['version']}\n")
     
     # Git Repository 변경사항 삭제 (필요한 경우에 주석 해제)
-    # command = 'cd ' + project_dir + '&& git reset --hard HEAD && git clean -fd'
-    # result = subprocess.run(command, capture_output=True, text=True, shell=True)
-    # print("STDOUT:", result.stdout)
-    # print("STDERR:", result.stderr)
-    # print("Return Code:", result.returncode)
+    command = 'cd ' + project_dir + '&& git reset --hard HEAD && git clean -fd'
+    result = subprocess.run(command, capture_output=True, text=True, shell=True)
+    print("STDOUT:", result.stdout)
+    print("STDERR:", result.stderr)
+    print("Return Code:", result.returncode)
+

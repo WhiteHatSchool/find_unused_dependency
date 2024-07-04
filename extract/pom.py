@@ -2,6 +2,32 @@ from xml.etree import ElementTree as ET
 import requests
 import os
 
+def download_pom(groupId, artifactId, version):
+    download_dir = './pom'
+
+    # Construct the URL
+    base_url = "https://repo1.maven.org/maven2"
+    group_path = groupId.replace('.', '/')
+    pom_url = f"{base_url}/{group_path}/{artifactId}/{version}/{artifactId}-{version}.pom"
+    
+    # Create the download directory if it doesn't exist
+    if not os.path.exists(download_dir):
+        os.makedirs(download_dir)
+    
+    # Define the path for the downloaded POM file
+    pom_path = os.path.join(download_dir, f"{artifactId}-{version}.xml")
+    
+    # Download the POM file
+    response = requests.get(pom_url)
+    if response.status_code == 200:
+        with open(pom_path, 'wb') as file:
+            file.write(response.content)
+        print(f"\033[32mPOM file downloaded successfully: {pom_path}\033[0m")
+        return extract_dependencies(pom_path)
+    else:
+        print(f"[-] Failed to download POM file: {pom_url} (status code: {response.status_code})")
+        return None
+    
 
 #############################
 def xml_to_dict(element, xmlns=""):

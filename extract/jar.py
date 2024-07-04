@@ -1,5 +1,4 @@
-import shutil
-from extract.pom import get_latest_version
+from extract.pom import get_latest_version, download_pom
 import zipfile
 import requests
 import os
@@ -110,7 +109,10 @@ def extract_class_names(jar_file):
         print(f"Error extracting class names from {jar_file}: {e}")
         return []
 
-def extract_classes_from_directory(groupId, artifactId, version, directory):
+def extract_classes_from_directory(dependency, directory):
+    groupId = dependency['groupId']
+    artifactId = dependency['artifactId']
+    version = dependency['version']
     # jar 파일 다운
     if version:
         download_jar(groupId, artifactId, version, directory)
@@ -126,38 +128,35 @@ def extract_classes_from_directory(groupId, artifactId, version, directory):
                 jar_file_path = os.path.join(root, file)
                 class_names = extract_class_names(jar_file_path)
                 all_class_names.extend(class_names)
-    
     return all_class_names
 
-def delete_jar(jar_dir):
-    # Jar 삭제
-    if os.path.exists(jar_dir) and os.path.isdir(jar_dir):
-        for filename in os.listdir(jar_dir):
-            file_path = os.path.join(jar_dir, filename)
-            try:
-                if os.path.isfile(file_path) or os.path.islink(file_path):
-                    os.remove(file_path)
-                elif os.path.isdir(file_path):
-                    shutil.rmtree(file_path)
-            except Exception as e:
-                print(f'Failed to delete {file_path}. Reason: {e}')
-
-def mapping_dependencies(dependency, imports, uimports, directory):
+def get_classes(dependency, directory):
     groupId = dependency['groupId']
     artifactId = dependency['artifactId']
     version = dependency['version']
-    
+    extra_dependencies =[]
     classes = []
-    classes = extract_classes_from_directory(groupId, artifactId, version, directory)
+
+    classes = extract_classes_from_directory(dependency, directory)
+    if len(classes) == 0:
+        extra_dependencies.extend(download_pom(groupId, artifactId, version))
+        for dep in extra_dependencies:
+            classes.extend(get_classes(dep, directory))
+    return classes
+
+def mapping_dependencies(dependency, imports, uimports, directory):
+    classes = []
+    classes = get_classes(dependency, directory)
+
     classes_set = set(classes)
 
     for imp in imports:
         if imp in classes_set:
-            print("[used import]: " + imp)
+            print("\033[34m[used import]: " + imp + "\033[0m")
             return 1
     for imp in uimports:
         if imp in classes_set:
-            print("[unused import]: " + imp)
+            print("\033[31m[unused import]: " + imp + "\033[0m")
             return -1
-    return 0
+    return 1
     

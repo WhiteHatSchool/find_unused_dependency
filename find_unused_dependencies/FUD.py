@@ -13,7 +13,7 @@ def get_import_list(file):
     with open(file, 'rb') as f:
         raw_data = f.read()
         result = chardet.detect(raw_data)
-        encoding = result['encoding']
+        encoding = result['encoding'] if result['encoding'] else 'utf-8'
 
     try:
         # 파일을 읽을 때 인코딩을 명시적으로 지정
@@ -28,6 +28,12 @@ def get_import_list(file):
 def del_unused_import(formatter_jar, file):
     formatted_imports = []
     result = subprocess.run(["java", "-jar", formatter_jar, "--fix-imports-only", file], stdout=subprocess.PIPE, text=True, encoding="utf-8")
+    
+    if result.returncode != 0:
+        print(f"Error running formatter on file {file}: {result.stderr}")
+        return []
+
+    
     formatted_imports += [line.strip() for line in result.stdout.splitlines() if line.strip().startswith("import")]
 
     return list(map(lambda x: x.replace("import ", "").replace("static ", "").replace(";", ""), formatted_imports))
@@ -70,12 +76,9 @@ def find_unused_dependencies(project_dir, formatter_jar, callback=None):
 
     ##########  delete import and find used import  ##########
     used_import = set()
-    current_file_index = 0
     # 각 Java 파일에 Google Java Formatter를 적용하여 포맷팅 및 사용되지 않는 import문 제거
     for file in java_files:
         used_import.update(del_unused_import(formatter_jar, file))
-        current_file_index = current_file_index + 1
-        callback(current_file_index, total_files, file, "Removing")
 
     ##########  find unused import  ##########
     unused_imports = list_of_unused_import(all_imports, used_import)
