@@ -2,6 +2,7 @@ from find_unused_dependencies.dependency_analyzer import pom_project_process
 from extract.javaFile import extract_imports_from_java_files
 from extract.pom import extract_from_all_poms
 from extract.jar import mapping_dependencies
+from result.upload import upload_to_s3
 from sbom.create import create_sbom
 import subprocess
 import argparse
@@ -26,13 +27,15 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Download Jar and Find Package')
     parser.add_argument('-p', '--project', dest="project" , action="store", type=str, default=None, help="프로젝트 경로")
     args = parser.parse_args()
-    project_dir = args.project
     formatter_dir = './find_unused_dependencies/google-java-format-1.22.0-all-deps.jar'
+    unused_dir = './result/unused_dependency.json'
+    sbom_dir = './result/sbom.json'
+    project_dir = args.project
     jar_dir = './jar'
     pom_dir = './pom'
 
     # SBOM 생성
-    create_sbom(project_dir)
+    create_sbom(project_dir, sbom_dir)
 
     ## Unused Imports 추출
     unused_imports = set(pom_project_process(project_dir, formatter_dir))
@@ -78,6 +81,7 @@ if __name__ == "__main__":
     
     with open('./result/unused_dependency.json', 'w') as import_file:
         json.dump(unused_dependencies, import_file, indent=4)
+    upload_to_s3(unused_dir, sbom_dir)
 
     # Git Repository 변경사항 삭제 (필요한 경우에 주석 해제)
     command = 'cd ' + project_dir + '&& git reset --hard HEAD && git clean -fd'
